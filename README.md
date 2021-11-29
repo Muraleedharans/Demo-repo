@@ -1,9 +1,6 @@
-<!READMEdoc>
-.
-.
-.
-# This is a demo repository 
-.
-.
-.
-Created by me for practice
+
+# Code for dynamic colour change 
+
+Created on 29-11-2021
+
+by Muraleedharan S

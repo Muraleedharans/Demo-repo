@@ -1,0 +1,35 @@
+person = [
+    {
+    "firstName": "Hari",
+    "lastName": "S",
+    "gender": "male",
+    "age": 23,
+    "streetAddress": "Sundharam street",
+    "city": "Coimbatore",
+    "state": "TN",
+    "postalCode": 641041,
+    "phoneNumber":6383611293 
+    },
+    {
+    "firstName": "Muralee",
+    "lastName": "S",
+    "gender": "male",
+    "age": 22,
+    "streetAddress": "ram street",
+    "city": "Coimbatore",
+    "state": "TN",
+    "postalCode": 641020,
+    "phoneNumber":7200432300 
+    },
+    {
+    "firstName": "Hari",
+    "lastName": "M",
+    "gender": "male",
+    "age": 20,
+    "streetAddress": "Sun street",
+    "city": "Coimbatore",
+    "state": "TN",
+    "postalCode": 641002,
+    "phoneNumber":9894718019 
+    }
+    ]

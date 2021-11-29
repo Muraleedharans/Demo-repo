@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Dynamic table from JSON data </title>
+	<style>
+		
+        th, td, p,input, h1 {
+            font:15px 'Arial';
+        }
+        table, th, td {
+            border: solid 1px #ddd;         
+            border-collapse: collapse;
+            padding: 2px 3px;
+			margin: auto;  
+			margin: 20px auto; 
+            text-align: center;
+        }
+		th {
+            font-weight:bold;
+        }
+		div{
+			padding: 2px 3px;
+			margin: auto;  
+			margin: 20px auto;
+			}
+		
+	</style>
+</head>
+<body>
+	<h1> This table is formed using json data <h1>
+	<input type='button' onclick='tformjason()' value='Table from JSON data' /> <br><br>
+	<form id ="fname" name="fname"> 
+	<input name= "fn" type="text" placeholder="Firstname">
+	</form>
+	<p id="jsontable"></p>
+	<div>
+	<label for="colours">Choose a Colour:</label>
+	  <select name="colours" id="colours" onchange="myFunction(this)">
+		<option value="">select</option>
+		<option value="0">Red</option>
+		<option value="1">Blue</option>
+		<option value="2">Grey</option>
+		<option value="3">Green</option>
+	  </select>
+	</div>
+	<script type="text/javascript" src="person.json"></script>
+</body>
+<script>
+
+function tformjason(){
+		var fn = document.fname.fn;
+		const text=[];
+			var row = [];
+			for (var i = 0; i < person.length; i++) {
+				for (var key in person[i]) {
+					if (row.indexOf(key) === -1) {
+						row.push(key);
+					}
+				}
+			}
+			var table = document.createElement("table");
+				table.setAttribute('id','table');
+				var tr = table.insertRow(-1);
+				for (var i = 0; i < row.length; i++) {
+					var th = document.createElement("th");
+					th.innerHTML = row[i];
+					tr.appendChild(th);
+					}
+			for (let j=0;j<person.length;j++){
+				for (let i=0;i<person.length;i++) {
+					if (fn.value==person[j].firstName){
+						text[j]=j;
+					}
+				}
+			}
+			for (let i=0;i<text.length;i++) {
+			if (text[i]==undefined){
+				continue;
+			}
+			tr = table.insertRow(-1);
+
+			for (var j = 0; j < row.length; j++) {
+				var tabRow = tr.insertCell(-1);
+				tabRow.innerHTML = person[text[i]][row[j]];
+				var td = document.createElement('td');
+				}
+			}
+			if (table.rows.length==1&&fn.value==="")
+				{
+					for (var i = 0; i < person.length; i++) {
+
+					tr = table.insertRow(-1);
+
+					for (var j = 0; j < row.length; j++) {
+						var tabRow = tr.insertCell(-1);
+						tabRow.innerHTML = person[i][row[j]];
+						var td = document.createElement('td');
+						}
+					}
+			}
+			var jsontable = document.getElementById('jsontable');
+			jsontable.innerHTML = "";
+			jsontable.appendChild(table);
+}
+function myFunction(x) {
+		var c =parseInt(x.value);
+		switch(c) {
+			  case 0:
+				document.getElementById("table").style.backgroundColor = "red";
+				break;
+			  case 1:
+				document.getElementById("table").style.backgroundColor = "blue";
+				break;
+			  case 2:
+				document.getElementById("table").style.backgroundColor = "#ddd";
+				break;
+			  case 3:
+				document.getElementById("table").style.backgroundColor = "green";
+				break;
+			}
+	}
+</script>
+</html>
