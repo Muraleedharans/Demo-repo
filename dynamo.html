@@ -26,7 +26,7 @@
 		
 	</style>
 </head>
-<body>
+<body onload=loadDoc()>
 	<h1> This table is formed using json data <h1>
 	<input type='button' onclick='tformjason()' value='Table from JSON data' /> <br><br>
 	<form id ="fname" name="fname"> 
@@ -43,11 +43,21 @@
 		<option value="3">Green</option>
 	  </select>
 	</div>
-	<script type="text/javascript" src="person.json"></script>
 </body>
 <script>
-
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+	  if (xhttp.readyState==4 && xhttp.status==200)
+	  {
+		sessionStorage.setItem("person", this.responseText);
+	  }
+  };
+  xhttp.open("GET","person.json",true);
+  xhttp.send();
+}
 function tformjason(){
+		var person = JSON.parse(sessionStorage.getItem("person"));
 		var fn = document.fname.fn;
 		const text=[];
 			var row = [];
