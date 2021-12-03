@@ -59,7 +59,7 @@ function loadDoc() {
 function tformjason(){
 		var person = JSON.parse(sessionStorage.getItem("person"));
 		var fn = document.fname.fn;
-		const text=[];
+		var text=[];
 			var row = [];
 				for (var key in person[0]) {
 						row.push(key);
@@ -75,34 +75,24 @@ function tformjason(){
 			for (let j=0;j<person.length;j++){
 				for (let i=0;i<person.length;i++) {
 					if (fn.value==person[j].firstName){
-						text[j]=j;
+						text[j]=person[j];
 					}
 				}
 			}
+			if (table.rows.length==1&&fn.value==="")
+					{
+						text=person;
+					}
 			for (let i=0;i<text.length;i++) {
 			if (text[i]==undefined){
 				continue;
 			}
 			tr = table.insertRow(-1);
-
 			for (var j = 0; j < row.length; j++) {
 				var tabRow = tr.insertCell(-1);
-				tabRow.innerHTML = person[text[i]][row[j]];
+				tabRow.innerHTML = text[i][row[j]];
 				var td = document.createElement('td');
 				}
-			}
-			if (table.rows.length==1&&fn.value==="")
-				{
-					for (var i = 0; i < person.length; i++) {
-
-					tr = table.insertRow(-1);
-
-					for (var j = 0; j < row.length; j++) {
-						var tabRow = tr.insertCell(-1);
-						tabRow.innerHTML = person[i][row[j]];
-						var td = document.createElement('td');
-						}
-					}
 			}
 			var jsontable = document.getElementById('jsontable');
 			jsontable.innerHTML = "";
