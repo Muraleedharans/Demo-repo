@@ -61,13 +61,9 @@ function tformjason(){
 		var fn = document.fname.fn;
 		const text=[];
 			var row = [];
-			for (var i = 0; i < person.length; i++) {
-				for (var key in person[i]) {
-					if (row.indexOf(key) === -1) {
+				for (var key in person[0]) {
 						row.push(key);
-					}
 				}
-			}
 			var table = document.createElement("table");
 				table.setAttribute('id','table');
 				var tr = table.insertRow(-1);
