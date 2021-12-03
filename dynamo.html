@@ -8,7 +8,7 @@
             font:15px 'Arial';
         }
         table, th, td {
-            border: solid 1px #ddd;         
+            border: solid 1px #000;         
             border-collapse: collapse;
             padding: 2px 3px;
 			margin: auto;  
@@ -61,17 +61,17 @@ function tformjason(){
 		var fn = document.fname.fn;
 		var text=[];
 			var row = [];
-				for (var key in person[0]) {
+			for (var key in person[0]) {
 						row.push(key);
 				}
 			var table = document.createElement("table");
 				table.setAttribute('id','table');
-				var tr = table.insertRow(-1);
-				for (var i = 0; i < row.length; i++) {
+			var tr = table.insertRow(-1);
+			for (var i = 0; i < row.length; i++) {
 					var th = document.createElement("th");
 					th.innerHTML = row[i];
 					tr.appendChild(th);
-					}
+				}
 			for (let j=0;j<person.length;j++){
 					if (fn.value==="")
 					{
@@ -88,9 +88,9 @@ function tformjason(){
 			}
 			tr = table.insertRow(-1);
 			for (var j = 0; j < row.length; j++) {
+				
 				var tabRow = tr.insertCell(-1);
 				tabRow.innerHTML = text[i][row[j]];
-				var td = document.createElement('td');
 				}
 			}
 			var jsontable = document.getElementById('jsontable');
