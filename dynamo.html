@@ -45,19 +45,19 @@
 	</div>
 </body>
 <script>
+var person;
 function loadDoc() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
 	  if (xhttp.readyState==4 && xhttp.status==200)
 	  {
-		sessionStorage.setItem("person", this.responseText);
+		person=JSON.parse(this.responseText);
 	  }
   };
   xhttp.open("GET","person.json",true);
   xhttp.send();
 }
 function tformjason(){
-		var person = JSON.parse(sessionStorage.getItem("person"));
 		var fn = document.fname.fn;
 		var text=[];
 			var row = [];
@@ -73,16 +73,15 @@ function tformjason(){
 					tr.appendChild(th);
 					}
 			for (let j=0;j<person.length;j++){
-				for (let i=0;i<person.length;i++) {
-					if (fn.value==person[j].firstName){
-						text[j]=person[j];
-					}
-				}
-			}
-			if (table.rows.length==1&&fn.value==="")
+					if (fn.value==="")
 					{
 						text=person;
+						break;
 					}
+					else if (fn.value==person[j].firstName){
+						text[j]=person[j];
+					}
+			}
 			for (let i=0;i<text.length;i++) {
 			if (text[i]==undefined){
 				continue;
