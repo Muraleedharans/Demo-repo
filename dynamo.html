@@ -89,16 +89,18 @@ function tformjason(){
 			}
 			tr = table.insertRow(-1);
 			for (var j = 0; j < jsonKey.length; j++) {
-				text[i][jsonKey[0]]=text[i].firstName+" "+text[i].lastName;
-                var phoneNumber = document.createElement("A");
-				var link = document.createTextNode(text[i][jsonKey[7]]);
-				phoneNumber.setAttribute("href", "tel:+"+text[i][jsonKey[7]]);
-				phoneNumber.appendChild(link);
 				var tabRow = tr.insertCell(-1);
-				if(j<jsonKey.length-1){
+				if(jsonKey[j]!="phoneNumber"&&jsonKey[j]!="FullName"){
 				tabRow.innerHTML = text[i][jsonKey[j]];
 					}
-				else{
+				else if(jsonKey[j]=="FullName") {
+					tabRow.innerHTML = text[i].firstName+" "+text[i].lastName;
+					}
+				else if(jsonKey[j]=="phoneNumber") {
+					var phoneNumber = document.createElement("A");
+					var link = document.createTextNode(text[i][jsonKey[j]]);
+					phoneNumber.setAttribute("href", "tel:+"+text[i][jsonKey[j]]);
+					phoneNumber.appendChild(link);
 					tabRow.appendChild(phoneNumber);
 					}
 				}
@@ -106,7 +108,6 @@ function tformjason(){
 			var jsontable = document.getElementById('jsontable');
 			jsontable.innerHTML = "";
 			jsontable.appendChild(table);
-			
 }
 function myFunction(x) {
 		var c =parseInt(x.value);
