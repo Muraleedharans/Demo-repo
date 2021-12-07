@@ -60,16 +60,17 @@ function loadDoc() {
 function tformjason(){
 		var fn = document.fname.fn;
 		var text=[];
-			var row = [];
-			for (var key in person[0]) {
-						row.push(key);
-				}
+			var jsonKey = [];
+			jsonKey = Object.keys(person[0]);
+			jsonKey.shift();
+			jsonKey.shift();
+			jsonKey.unshift("FullName");
 			var table = document.createElement("table");
 				table.setAttribute('id','table');
 			var tr = table.insertRow(-1);
-			for (var i = 0; i < row.length; i++) {
+			for (var i = 0; i < jsonKey.length; i++) {
 					var th = document.createElement("th");
-					th.innerHTML = row[i];
+					th.innerHTML = jsonKey[i];
 					tr.appendChild(th);
 				}
 			for (let j=0;j<person.length;j++){
@@ -87,15 +88,25 @@ function tformjason(){
 				continue;
 			}
 			tr = table.insertRow(-1);
-			for (var j = 0; j < row.length; j++) {
-				
+			for (var j = 0; j < jsonKey.length; j++) {
+				text[i][jsonKey[0]]=text[i].firstName+" "+text[i].lastName;
+                var phoneNumber = document.createElement("A");
+				var link = document.createTextNode(text[i][jsonKey[7]]);
+				phoneNumber.setAttribute("href", "tel:+"+text[i][jsonKey[7]]);
+				phoneNumber.appendChild(link);
 				var tabRow = tr.insertCell(-1);
-				tabRow.innerHTML = text[i][row[j]];
+				if(j<jsonKey.length-1){
+				tabRow.innerHTML = text[i][jsonKey[j]];
+					}
+				else{
+					tabRow.appendChild(phoneNumber);
+					}
 				}
 			}
 			var jsontable = document.getElementById('jsontable');
 			jsontable.innerHTML = "";
 			jsontable.appendChild(table);
+			
 }
 function myFunction(x) {
 		var c =parseInt(x.value);
