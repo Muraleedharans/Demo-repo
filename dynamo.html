@@ -99,7 +99,7 @@ function tformjason(){
 				else if(jsonKey[j]=="phoneNumber") {
 					var phoneNumber = document.createElement("A");
 					var link = document.createTextNode(text[i][jsonKey[j]]);
-					phoneNumber.setAttribute("href", "tel:+"+text[i][jsonKey[j]]);
+					phoneNumber.setAttribute("href", "tel:+91"+text[i][jsonKey[j]]);
 					phoneNumber.appendChild(link);
 					tabRow.appendChild(phoneNumber);
 					}
